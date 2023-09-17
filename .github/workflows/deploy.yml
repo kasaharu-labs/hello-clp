@@ -12,7 +12,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Deploy
-        uses: cloudflare/wrangler-action@v3
-        with:
-          apiToken: ${{ secrets.CF_API_TOKEN }}
-          command: pages deploy --project-name=hello-clp
+        run: |
+          npm ci
+          npm run deploy
