@@ -14,7 +14,7 @@
     "process": "node ./tools/copy-worker-files.mjs && node ./tools/copy-client-files.mjs && node ./tools/bundle.mjs",
     "prestart": "npm run build:ssr && npm run process",
     "predeploy": "npm run build:ssr && npm run process",
-    "deploy": "wrangler pages deploy dist/cloudflare"
+    "deploy": "wrangler pages deploy dist/cloudflare --project-name=hello-clp"
   },
   "private": true,
   "dependencies": {
