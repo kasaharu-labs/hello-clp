@@ -9,10 +9,11 @@
     "test": "ng test",
     "dev:ssr": "ng run hello-clp:serve-ssr",
     "serve:ssr": "node dist/hello-clp/server/main.js",
+    "build:ssr:dev": "ng build --configuration development && ng run hello-clp:server",
     "build:ssr": "ng build && ng run hello-clp:server",
     "prerender": "ng run hello-clp:prerender",
     "process": "node ./tools/copy-worker-files.mjs && node ./tools/copy-client-files.mjs && node ./tools/bundle.mjs",
-    "prestart": "npm run build:ssr && npm run process",
+    "prestart": "npm run build:ssr:dev && npm run process",
     "predeploy": "npm run build:ssr && npm run process",
     "deploy": "wrangler pages deploy dist/cloudflare --project-name=hello-clp"
   },
