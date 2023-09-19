@@ -15,9 +15,13 @@ import { environment } from '../environments/environment';
 export class AppComponent implements OnInit {
   private readonly http = inject(HttpClient);
   title = 'hello-clp';
+  message = '';
 
   async ngOnInit(): Promise<void> {
-    const res = await firstValueFrom(this.http.get(environment.apiOrigin));
+    const res = await firstValueFrom(
+      this.http.get<{ message: string }>(environment.apiOrigin)
+    );
     console.log(res);
+    this.message = res.message;
   }
 }
