@@ -5,6 +5,12 @@ import { RouterOutlet } from '@angular/router';
 import { firstValueFrom } from 'rxjs';
 import { environment } from '../environments/environment';
 
+interface Customer {
+  CustomerId: number;
+  CompanyName: string;
+  ContactName: string;
+}
+
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -15,13 +21,13 @@ import { environment } from '../environments/environment';
 export class AppComponent implements OnInit {
   private readonly http = inject(HttpClient);
   title = 'hello-clp';
-  message = '';
+  customers: Customer[] = [];
 
   async ngOnInit(): Promise<void> {
     const res = await firstValueFrom(
-      this.http.get<{ message: string }>(environment.apiOrigin)
+      this.http.get<Customer[]>(`${environment.apiOrigin}/api/customers`)
     );
     console.log(res);
-    this.message = res.message;
+    this.customers = res;
   }
 }

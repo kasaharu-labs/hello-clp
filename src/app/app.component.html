@@ -1,4 +1,15 @@
 <h1>{{ title }}</h1>
-<p>{{ message }}</p>
+
+<table>
+  <tbody>
+    <ng-container *ngFor="let customer of customers">
+      <tr>
+        <td>{{ customer.CustomerId }}</td>
+        <td>{{ customer.CompanyName }}</td>
+        <td>{{ customer.ContactName }}</td>
+      </tr>
+    </ng-container>
+  </tbody>
+</table>
 
 <router-outlet></router-outlet>
